@@ -1,0 +1,16 @@
+average annual precipitation
+average January temperature
+average July temperature
+size of the population older than 65
+number of members per household
+number of years of schooling for persons over 22
+number of households with fully equipped kitchens
+population per square mile
+size of the nonwhite population
+number of office workers
+number of families with an income less than $3000
+hydrocarbon pollution index
+nitric oxide pollution index
+sulfur dioxide pollution index
+degree of atmospheric moisture
+death rate

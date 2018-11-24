@@ -1,26 +1,28 @@
 #
+#
 #  The death rate is to be represented as a function of other variables.
 #
-#  The first line contains the number of fields(parameters) on the table
-16
-#  The following lines contain the name for each field
-average annual precipitation
-average January temperature
-average July temperature
-size of the population older than 65
-number of members per household
-number of years of schooling for persons over 22
-number of households with fully equipped kitchens
-population per square mile
-size of the nonwhite population
-number of office workers
-number of families with an income less than $3000
-hydrocarbon pollution index
-nitric oxide pollution index
-sulfur dioxide pollution index
-degree of atmospheric moisture
-death rate
+#  The following lines are the names for each field:
+#
+#       average annual precipitation
+#       average January temperature
+#       average July temperature
+#       size of the population older than 65
+#       number of members per household
+#       number of years of schooling for persons over 22
+#       number of households with fully equipped kitchens
+#       population per square mile
+#       size of the nonwhite population
+#       number of office workers
+#       number of families with an income less than $3000
+#       hydrocarbon pollution index
+#       nitric oxide pollution index
+#       sulfur dioxide pollution index
+#       degree of atmospheric moisture
+#       death rate
+#
 #  And there follows the data table
+#
 36  27  71   8.1  3.34  11.4  81.5  3243   8.8  42.6  11.7   21   15   59  59   921.870
 35  23  72  11.1  3.14  11.0  78.8  4281   3.6  50.7  14.4    8   10   39  57   997.875
 44  29  74  10.4  3.21   9.8  81.6  4260   0.8  39.4  12.4    6    6   33  54   962.354
