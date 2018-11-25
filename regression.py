@@ -12,6 +12,7 @@ def data_loader(filename):
         data = np.genfromtxt(file, comments="#")
     return (data[:, :-1], data[:, -1:])
 
+
 class Regression:
 
     def __init__(self, X, y, lamb, rho):
@@ -40,7 +41,7 @@ class Regression:
 
         for epoch in range(epochs):
             self.update()
-            print("epoch {}: SSE = {}, error = {}".format(epoch, self.sse(), self.error()))
+            print("epoch {}: error = {}".format(epoch, self.error()))
 
     def update(self):
 
@@ -63,25 +64,6 @@ class Regression:
         m = self.y - np.dot(self.X, self.beta)
         return (1/2) * np.sum(m * m) + self.lamb * np.sum(abs(self.theta[1:]))
 
-    def sse(self):
-
-        """
-        the sum of squared errors
-        """
-
-        m = self.y - np.dot(self.X, self.beta)
-        return (1/2) * np.sum(m * m)
-
-    def primitive_sse(self):
-
-        """
-        the sum of squared errors, if y_hat were just the average of 
-        all y values. can be used to evaluate whether the regression 
-        has produced a meaningful result
-        """
-
-        m = self.y - np.full((self.num_data, 1), np.sum(self.y) / self.num_data)
-        return (1/2) * np.sqrt(np.sum(m * m))
 
 def soft_threshold(tau, z):
     return np.sign(z) * max((abs(z) - tau), 0)
