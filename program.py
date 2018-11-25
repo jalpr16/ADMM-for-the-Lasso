@@ -85,7 +85,7 @@ class OptionsWidget(GridLayout):
 class PredictorApp(App):
 
     def __init__(self, file_data_name = str("data.txt"), file_index_name = str("data_index.txt"), 
-                 lamb = 1, rho = 1, epochs = 100, *args, **kwargs):
+                 lamb = 1, rho = 1, epochs = 25, *args, **kwargs):
         super(PredictorApp, self).__init__(**kwargs)
 
         global field_X, field_y, num_fields, num_data, field_names, beta
