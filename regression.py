@@ -33,6 +33,11 @@ class Regression:
         self.num_parameters = len(self.X[0])
 
     def run(self, epochs):
+
+        """
+        runs update() 'epochs' times
+        """
+
         for epoch in range(epochs):
             self.update()
             print("epoch {}: SSE = {}, error = {}".format(epoch, self.sse(), self.error()))
@@ -51,14 +56,18 @@ class Regression:
 
     def error(self):
 
-        """the function that is supposed to be minimized"""
+        """
+        the function that is supposed to be minimized
+        """
 
         m = self.y - np.dot(self.X, self.beta)
         return (1/2) * np.sqrt(np.sum(m * m)) + self.lamb * np.sum(abs(self.theta[1:]))
 
     def sse(self):
 
-        """the sum of squared errors"""
+        """
+        the square root of the sum of squared errors
+        """
 
         m = self.y - np.dot(self.X, self.beta)
         return (1/2) * np.sqrt(np.sum(m * m))
@@ -66,8 +75,9 @@ class Regression:
     def primitive_sse(self):
 
         """
-        the sum of squared errors, if y_hat were just the average of all y values. can
-        be used to evaluate whether the regression has produced a meaningful result
+        the square root of the sum of squared errors, if y_hat were just the average
+        of all y values. can be used to evaluate whether the regression has produced
+        a meaningful result
         """
 
         m = self.y - np.full((self.num_data, 1), np.sum(self.y) / self.num_data)

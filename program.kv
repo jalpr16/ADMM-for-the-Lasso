@@ -2,10 +2,13 @@
 <OptionLabel@Label>:
     font_size: '12sp'
 
+<OptionBox@BoxLayout>:
+    size_hint: 1, None
+    height: 40
 
 <OptionsWidget>:
     cols: 1
-    size_hint: 1, 2
+    size_hint: 1, None
 
     options_box:      options_box
     predicted_y_name: predicted_y_name
@@ -15,9 +18,7 @@
     actual_y_idx:     actual_y_idx
     actual_y:         actual_y
 
-    BoxLayout:
-        size_hint: 1, None
-        height: 40
+    OptionBox:
         OptionLabel:
             text: "parameters"
             size_hint: 2, 1
@@ -33,23 +34,17 @@
         size_hint: 1, None
         orientation: 'vertical'
 
-
-    BoxLayout:
-        size_hint: 1, None
-        height: 40
+    OptionBox:
         OptionLabel:
             id: predicted_y_name
             size_hint: 1, 1
-        Label:
-            # this is nothing
+        Label:                  # this is nothing
             size_hint: 1.3, 1
         OptionLabel:
             id: predicted_y
             size_hint: .3, 1
 
-    BoxLayout:
-        size_hint: 1, None
-        height: 40
+    OptionBox:
         OptionLabel:
             id: actual_y_name
             size_hint: 1, 1
@@ -61,8 +56,7 @@
         OptionLabel:
             id: actual_y_idx
             size_hint: .5, 1
-        Label:
-            # this is nothinig
+        Label:                  # this is nothinig
             size_hint: .3, 1
         OptionLabel:
             id: actual_y

@@ -2,15 +2,11 @@
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.scrollview import ScrollView
-from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.gridlayout import GridLayout
-from kivy.uix.stacklayout import StackLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.slider import Slider
 from kivy.uix.button import Button
-from kivy.uix.widget import Widget
-from kivy.core.window import Window
 
 import regression
 import numpy as np
@@ -30,6 +26,7 @@ class RootWidget(ScrollView):
         super(RootWidget, self).__init__(**kwargs)
 
         self.do_scroll = False, True
+        self.bar_width = 10
         self.options = OptionsWidget()
         self.add_widget(self.options)
 
@@ -50,7 +47,8 @@ class OptionsWidget(GridLayout):
         self.options_box.height = 40 * (num_fields-1)
         self.sliders = []
         for i in range(num_fields-1):
-            self.sliders.append(Slider(value = field_X_average[i], min = 0., max = field_X_max[i] * 2,
+            self.sliders.append(Slider(value = field_X_average[i],
+                                       min = 0., max = field_X_max[i] * 2,
                                        size_hint = (1, 1),
                                        background_width = '16sp', cursor_size = (24, 24)))
             self.sliders[-1].bind(value = self.on_slider_value)
@@ -63,12 +61,11 @@ class OptionsWidget(GridLayout):
             box.add_widget(self.sliders[-1].label)
             box.add_widget(Label(text = "{:.2f}".format(beta[i+1]), font_size = '12sp',
                                  size_hint = (.3, 1)))
-            self.options_box.add_widget(box)
+            self.options_box.add_widget(box) 
 
         self.predicted_y_name.text = 'predicted ' + field_names[-1]
         self.actual_y_name.text = 'actual ' + field_names[-1]
         self.actual_y_button.bind(on_press = self.on_actual_y_value)
-
 
     def on_slider_value(self, instance, value):
         instance.label.text = "{:.2f}".format(value)
@@ -85,19 +82,11 @@ class OptionsWidget(GridLayout):
         self.actual_y.text = str(field_y[idx, 0])
 
 
-class OptionLabel(Label):
-
-    def __init__(self, **kwargs):
-        super(OptionLabel, self).__init__(**kwargs)
-
-        self.font_size = '12sp'
-
-
-class RootApp(App):
+class PredictorApp(App):
 
     def __init__(self, file_data_name = str("data.txt"), file_index_name = str("data_index.txt"), 
                  lamb = 1, rho = 1, epochs = 100, *args, **kwargs):
-        super(RootApp, self).__init__(**kwargs)
+        super(PredictorApp, self).__init__(**kwargs)
 
         global field_X, field_y, num_fields, num_data, field_names, beta
         field_X, field_y = regression.data_loader(file_data_name)
@@ -135,4 +124,4 @@ if __name__ == '__main__':
                 print("ValueError: the number of epochs must be an integer")
                 break
     else:
-        RootApp(*sys.argv[1:3], *args).run()
+        PredictorApp(*sys.argv[1:3], *args).run()
