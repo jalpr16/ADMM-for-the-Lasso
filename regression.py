@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 
 import numpy as np
 
@@ -21,7 +20,7 @@ class Regression:
         y is y values from a dataset, stored in a 2-D array, y[i] having just
         one element y_i for each data. X is x values from the dataset stored
         in a 2-D array, X[i] storing x_1, x_2, ..., x_n for each data. 1 is
-        inserted at the beginning of each dataset for the constant term.
+        inserted at the beginning of each data for the constant term.
         """
 
         self.y = y
@@ -41,7 +40,7 @@ class Regression:
     def update(self):
 
         """
-        updates beta_(t+1), theta_(t+1), mu_(t+1) from beta_t, theta_t, mu_t
+        updates β_(t+1), θ_(t+1), μ_(t+1) from β_t, θ_t, μ_t
         """
 
         self.beta = np.dot(np.linalg.inv(np.dot(np.transpose(self.X), self.X) + self.rho * np.eye(self.num_parameters)),
@@ -68,7 +67,7 @@ class Regression:
 
         """
         the sum of squared errors, if y_hat were just the average of all y values. can
-        be used to evaluate if the regression has produced a meaningful result
+        be used to evaluate whether the regression has produced a meaningful result
         """
 
         m = self.y - np.full((self.num_data, 1), np.sum(self.y) / self.num_data)
