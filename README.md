@@ -59,7 +59,7 @@ On the console, you can see how the β values are being optimized
 epoch 0: SSE = 132.99789541508514, error = 282.5845553987417
 epoch 1: SSE = 117.66245890634582, error = 209.96239468917202
 ...
-epoch 25: SSE = 112.422702005642, error = 147.4025536162044
+epoch 24: SSE = 112.46937129264704, error = 146.74715446968258
 ```
 
 See the docs in regression.py for more information.
